@@ -1,5 +1,6 @@
 h1,
 h3 {
+  font-family: "Comic Sans MS", arial;
   text-align: center;
 }
 
@@ -16,11 +17,190 @@ h3 {
 }
 
 .news {
-  width: 70%;
+  width: 90%;
   margin: auto;
 }
 
 a {
   text-decoration: none;
   color: blue;
+}
+
+@-webkit-keyframes pulsate {
+  0% {
+    background-color: #f44336;
+  }
+  25% {
+    background-color: #E91E63;
+  }
+  50% {
+    background-color: #2196F3;
+  }
+  75% {
+    background-color: #FFC107;
+  }
+  100% {
+    background-color: #FF5722;
+  }
+}
+
+@-moz-keyframes pulsate {
+  0% {
+    background-color: #f44336;
+  }
+  25% {
+    background-color: #E91E63;
+  }
+  50% {
+    background-color: #2196F3;
+  }
+  75% {
+    background-color: #FFC107;
+  }
+  100% {
+    background-color: #FF5722;
+  }
+}
+
+@-o-keyframes pulsate {
+  0% {
+    background-color: #f44336;
+  }
+  25% {
+    background-color: #E91E63;
+  }
+  50% {
+    background-color: #2196F3;
+  }
+  75% {
+    background-color: #FFC107;
+  }
+  100% {
+    background-color: #FF5722;
+  }
+}
+
+@keyframes pulsate {
+  0% {
+    background-color: #f44336;
+  }
+  25% {
+    background-color: #E91E63;
+  }
+  50% {
+    background-color: #2196F3;
+  }
+  75% {
+    background-color: #FFC107;
+  }
+  100% {
+    background-color: #FF5722;
+  }
+}
+
+@-webkit-keyframes move {
+  to {
+    stroke-dashoffset: -1200;
+  }
+}
+
+@-moz-keyframes move {
+  to {
+    stroke-dashoffset: -1200;
+  }
+}
+
+@-o-keyframes move {
+  to {
+    stroke-dashoffset: -1200;
+  }
+}
+
+@keyframes move {
+  to {
+    stroke-dashoffset: -1200;
+  }
+}
+
+@-webkit-keyframes fade {
+  0% {
+    opacity: 1;
+  }
+  50% {
+    opacity: 0;
+  }
+}
+
+@-moz-keyframes fade {
+  0% {
+    opacity: 1;
+  }
+  50% {
+    opacity: 0;
+  }
+}
+
+@-o-keyframes fade {
+  0% {
+    opacity: 1;
+  }
+  50% {
+    opacity: 0;
+  }
+}
+
+@keyframes fade {
+  0% {
+    opacity: 1;
+  }
+  50% {
+    opacity: 0;
+  }
+}
+
+.loader {
+  height: 10%;
+  left: 0;
+  position: fixed;
+  bottom: 0;
+  width: 100%;
+  z-index: 9999999;
+  -webkit-animation-duration: 80s;
+  -moz-animation-duration: 80s;
+  -o-animation-duration: 80s;
+  animation-duration: 80s;
+  -webkit-animation-iteration-count: infinite;
+  -moz-animation-iteration-count: infinite;
+  -o-animation-iteration-count: infinite;
+  animation-iteration-count: infinite;
+  -webkit-animation-name: pulsate;
+  -moz-animation-name: pulsate;
+  -o-animation-name: pulsate;
+  animation-name: pulsate;
+  -webkit-animation-direction: normal;
+  -moz-animation-direction: normal;
+  -o-animation-direction: normal;
+  animation-direction: normal;
+}
+
+.loader svg {
+  left: 0;
+  position: absolute;
+  top: 50%;
+  -webkit-transform: translate(0, -50%);
+  -ms-transform: translate(0, -50%);
+  -o-transform: translate(0, -50%);
+  transform: translate(0, -50%);
+}
+
+.animation {
+  fill: none;
+  stroke: #ffffff;
+  stroke-linecap: square;
+  stroke-miterlimit: 10;
+  stroke-width: 0.5px;
+  opacity: 1;
+  stroke-dasharray: 600;
+  -webkit-animation: move 5s linear forwards infinite, fade 5s linear infinite;
+  animation: move 5s linear forwards infinite, fade 5s linear infinite;
 }
