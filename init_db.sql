@@ -15,7 +15,8 @@
 
 
 
-USE mvc;
+CREATE DATABASE test;
+USE test;
 
 
 
