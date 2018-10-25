@@ -9,6 +9,6 @@
 </head>
 <body>
   <h1>POO</h1>
-  <p>V0.01a</p>
+  <p>V0.01</p>
 </body>
 </html>
