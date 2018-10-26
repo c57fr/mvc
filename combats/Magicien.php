@@ -1,8 +1,9 @@
 <?php
+
 class Magicien extends Personnage
 {
   public $magie;
-  
+
   public function lancerUnSort(Personnage $perso)
   {
     if ($this->degats >= 0 && $this->degats <= 25) {
@@ -17,7 +18,7 @@ class Magicien extends Personnage
       $this->atout = 0;
     }
 
-    if ($perso->id == $this->id) {
+    if ($perso->idp == $this->idp) {
       return self::CEST_MOI;
     }
 

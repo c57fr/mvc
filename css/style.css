@@ -1,7 +1,11 @@
 body {
-  margin: 0 30px;
-  padding: 0;
-  color: greenyellow;
-  background-color: #000;
-  font-family: "Comic Sans MS", arial;
+    margin: 0 30px;
+    padding: 0;
+    color: greenyellow;
+    background-color: #252525;
+    font-family: "Comic Sans MS", arial;
+}
+
+a:visited {
+    color: #bb8864;
 }
