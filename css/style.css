@@ -5,6 +5,9 @@ body {
     background-color: #252525;
     font-family: "Comic Sans MS", arial;
 }
+a, a:active {
+  color: cyan;
+}
 
 a:visited {
     color: #bb8864;

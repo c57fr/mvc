@@ -2,24 +2,24 @@
 
 class PersonnagesManager
 {
-  private $db; // Instance de PDO
+  private $dbc; // Instance de PDO
 
-  public function __construct($db)
+  public function __construct($dbc)
   {
-    $this->db = $db;
+    $this->dbc = $dbc;
   }
 
   public function add(Personnage $perso)
   {
-    $q = $this->db->prepare('INSERT INTO personnages_v2(nom, type) VALUES(:nom, :type)');
+    $qry = $this->dbc->prepare('INSERT INTO personnages_v2(nom, type) VALUES(:nom, :type)');
 
-    $q->bindValue(':nom', $perso->nom());
-    $q->bindValue(':type', $perso->type());
+    $qry->bindValue(':nom', $perso->nom());
+    $qry->bindValue(':type', $perso->type());
 
-    $q->execute();
+    $qry->execute();
 
     $perso->hydrate([
-      'id' => $this->db->lastInsertIdp(),
+      'id' => $this->dbc->lastInsertId(),
       'degats' => 0,
       'atout' => 0
     ]);
@@ -27,12 +27,12 @@ class PersonnagesManager
 
   public function count()
   {
-    return $this->db->query('SELECT COUNT(*) FROM personnages_v2')->fetchColumn();
+    return $this->dbc->query('SELECT COUNT(*) FROM personnages_v2')->fetchColumn();
   }
 
   public function delete(Personnage $perso)
   {
-    $this->db->exec('DELETE FROM personnages_v2 WHERE id = ' . $perso->idp());
+    $this->dbc->exec('DELETE FROM personnages_v2 WHERE id = ' . $perso->idp());
   }
 
   public function exists($info)
@@ -44,22 +44,22 @@ class PersonnagesManager
 
     // Sinon, c'est qu'on veut vérifier que le nom existe ou pas.
 
-    $q = $this->db->prepare('SELECT COUNT(*) FROM personnages_v2 WHERE nom = :nom');
-    $q->execute([':nom' => $info]);
+    $qry = $this->dbc->prepare('SELECT COUNT(*) FROM personnages_v2 WHERE nom = :nom');
+    $qry->execute([':nom' => $info]);
 
-    return (bool)$q->fetchColumn();
+    return (bool)$qry->fetchColumn();
   }
 
   public function get($info)
   {
     if (is_int($info)) {
-      $q = $this->db->query('SELECT id idp, nom, degats, timeEndormi, type, atout FROM personnages_v2 WHERE id = ' . $info);
-      $perso = $q->fetch(PDO::FETCH_ASSOC);
+      $qry = $this->dbc->query('SELECT id idp, nom, degats, timeEndormi, type, atout FROM personnages_v2 WHERE id = ' . $info);
+      $perso = $qry->fetch(PDO::FETCH_ASSOC);
     } else {
-      $q = $this->db->prepare('SELECT id idp, nom, degats, timeEndormi, type, atout FROM personnages_v2 WHERE nom = :nom');
-      $q->execute([':nom' => $info]);
+      $qry = $this->db->prepare('SELECT id idp, nom, degats, timeEndormi, type, atout FROM personnages_v2 WHERE nom = :nom');
+      $qry->execute([':nom' => $info]);
 
-      $perso = $q->fetch(PDO::FETCH_ASSOC);
+      $perso = $qry->fetch(PDO::FETCH_ASSOC);
     }
 
     switch ($perso['type']) {
@@ -76,10 +76,10 @@ class PersonnagesManager
   {
     $persos = [];
 
-    $q = $this->db->prepare('SELECT id idp, nom, degats, timeEndormi, type, atout FROM personnages_v2 WHERE nom <> :nom ORDER BY nom');
-    $q->execute([':nom' => $nom]);
+    $qry = $this->db->prepare('SELECT id idp, nom, degats, timeEndormi, type, atout FROM personnages_v2 WHERE nom <> :nom ORDER BY nom');
+    $qry->execute([':nom' => $nom]);
 
-    while ($donnees = $q->fetch(PDO::FETCH_ASSOC)) {
+    while ($donnees = $qry->fetch(PDO::FETCH_ASSOC)) {
       //echo "<pre>";print_r($donnees);echo "</pre>";
       switch ($donnees['type']) {
         case 'guerrier':
@@ -96,13 +96,13 @@ class PersonnagesManager
 
   public function update(Personnage $perso)
   {
-    $q = $this->db->prepare('UPDATE personnages_v2 SET degats = :degats, timeEndormi = :timeEndormi, atout = :atout WHERE id = :id');
+    $qry = $this->db->prepare('UPDATE personnages_v2 SET degats = :degats, timeEndormi = :timeEndormi, atout = :atout WHERE id = :id');
 
-    $q->bindValue(':degats', $perso->degats(), PDO::PARAM_INT);
-    $q->bindValue(':timeEndormi', $perso->timeEndormi(), PDO::PARAM_INT);
-    $q->bindValue(':atout', $perso->atout(), PDO::PARAM_INT);
-    $q->bindValue(':id', $perso->idp(), PDO::PARAM_INT);
+    $qry->bindValue(':degats', $perso->degats(), PDO::PARAM_INT);
+    $qry->bindValue(':timeEndormi', $perso->timeEndormi(), PDO::PARAM_INT);
+    $qry->bindValue(':atout', $perso->atout(), PDO::PARAM_INT);
+    $qry->bindValue(':id', $perso->idp(), PDO::PARAM_INT);
 
-    $q->execute();
+    $qry->execute();
   }
 }

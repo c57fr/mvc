@@ -143,7 +143,7 @@ if (isset($_POST['creer']) && isset($_POST['nom'])) // Si on a voulu créer un p
   <!DOCTYPE html>
   <html>
   <head>
-    <title>TP : Mini jeu de combat - Version 2</title>
+    <title>TP : Mini jeu de combat - V2</title>
 
     <meta charset="utf-8"/>
 
