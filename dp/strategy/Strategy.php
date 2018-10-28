@@ -8,7 +8,10 @@ function autoload($class)
 
 spl_autoload_register('autoload');
 
-$writer = new FileWriter(new HTMLFormater, 'file.html');
+$writer = new FileWriter(new XMLFormater, 'file.html');
 $writer->write('Hello world !');
 
-echo 'Fichier crée.';
+echo 'Fichier crée.<pre>';
+
+print_r($writer);
+echo "</pre>";
