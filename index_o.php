@@ -14,6 +14,9 @@
   <h2><a href="https://openclassrooms.com/fr/courses/1665806-programmez-en-oriente-objet-en-php" target="_blank">POO</a></h2>
 
   <h2><a href="https://openclassrooms.com/fr/courses/4670706-adoptez-une-architecture-mvc-en-php" target="_blank">MVC</a></h2>
-  
+
+<hr>
+<footer style="text-align: right; font-size: 10px; margin-top:-7px">PHP <?=phpversion();?></footer>
+
 </body>
 </html>
