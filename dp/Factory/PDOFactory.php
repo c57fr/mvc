@@ -15,7 +15,7 @@ $mailSender = new class('login@fai.tld') implements SplObserver
 
  function update(SplSubject $obj)
  {
-  mail($this->mail, date('H:i:s',time()). ' - Erreur détectée !', 'Une erreur a été détectée sur le site. Voici les informations de celle-ci : ' . "\n" . $obj->getFormatedError());
+  mail($this->mail, date('H:i:s', time()) . ' - Erreur détectée !', 'Une erreur a été détectée sur le site. Voici les informations de celle-ci : ' . "\n" . $obj->getFormatedError());
  }
 };
 
@@ -55,7 +55,6 @@ class PDOFactory
   return $dbc;
  }
 }
-
 
 $o = new ErrorHandler; // Nous créons un nouveau gestionnaire d'erreur.
 
