@@ -44,3 +44,5 @@ echo 'Fichier crée.<pre>';
 
 print_r($writer);
 echo "</pre>";
+
+// En résumé, les Formater sont des classes anonymes
