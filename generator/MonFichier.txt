@@ -1,0 +1,4 @@
+Définissons ce qu’est un générateur par une étude de cas. Parcourons les
+lignes d’un fichier pour faire une quelconque opération sur chacune d’entre elles. Pour ce faire,
+vous avez la fonction file qui a pour rôle de lire le fichier puis de retourner un tableau dont
+chaque entrée est une ligne différente. Son utilisation est ainsi plutôt simple.
