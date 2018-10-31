@@ -1,9 +1,9 @@
-<?php $title = 'Mon blog';?>
+<?php
+$title = 'Mon blog';
+ob_start();?>
 
-<?php ob_start();?>
 <h1>Mon super blog !</h1>
 <p>Derniers billets du blog :</p>
-
 
 <?php
 while ($data = $posts->fetch()) {
@@ -23,7 +23,6 @@ while ($data = $posts->fetch()) {
 <?php
 }
 $posts->closeCursor();
-?>
-<?php $content = ob_get_clean();?>
 
-<?php require 'template.php';?>
+$content = ob_get_clean();
+require 'template.php';

@@ -1,6 +1,7 @@
-<?php $title = htmlspecialchars($post['title']);?>
+<?php
 
-<?php ob_start();?>
+$title = htmlspecialchars($post['title']);ob_start();?>
+
 <h1>Mon super blog !</h1>
 <p><a href="index.php">Retour à la liste des billets</a></p>
 
@@ -38,7 +39,6 @@ while ($comment = $comments->fetch()) {
     <p><?=nl2br(htmlspecialchars($comment['comment']))?></p>
 <?php
 }
-?>
-<?php $content = ob_get_clean();?>
 
-<?php require 'template.php';?>
+$content = ob_get_clean();
+require 'template.php';?>
