@@ -19,6 +19,7 @@
   <hr>
 
   <h2><a href="https://openclassrooms.com/fr/courses/4670706-adoptez-une-architecture-mvc-en-php" target="_blank">MVC</a></h2>
+  <p>&nbsp;&nbsp;<a href="http://mvc/mvc2">MVC 2</a></p>
 
   <hr>
 

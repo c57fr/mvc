@@ -2,6 +2,7 @@
 require 'autoload.php';
 
 $db      = DBFactory::getMysqlConnexionWithPDO();
+// $db      = DBFactory::getMysqlConnexionWithMySQLi();
 $manager = new NewsManagerPDO($db);
 ?>
 <!DOCTYPE html>
