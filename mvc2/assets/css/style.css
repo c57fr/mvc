@@ -1,0 +1,19 @@
+body {
+  font-family: arial;
+  color: maroon;
+  background-color: cornsilk;
+}
+
+#titre {
+  color: #000;
+  text-decoration: none;
+}
+
+.success {
+  text-align: center;
+  font-size: 2em;
+  color:rgb(15, 54, 0);
+  border: 3px solid rgb(15, 54, 0);
+  border-radius: 7px;
+  background-color: rgb(102, 255, 0);
+}
