@@ -17,3 +17,9 @@ body {
   border-radius: 7px;
   background-color: rgb(102, 255, 0);
 }
+
+h3 em {
+  display: block;
+  font-size: 0.7em;
+  color: rgba(128, 0, 0, 0.603);
+}

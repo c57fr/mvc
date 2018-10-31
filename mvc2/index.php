@@ -1,6 +1,6 @@
 <?php
 // Juste pour débugage
-include 'assets/tools/debug.php';
+// include 'assets/tools/debug.php';
 
 require 'controller/frontend.php';
 
