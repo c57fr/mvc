@@ -1,0 +1,11 @@
+{
+    "name": "grcote7/mvc",
+    "description": "tuto mvc",
+    "require-dev": {
+        "phpdocumentor/phpdocumentor": "^2.9"
+    },
+    "authors": [{
+        "name": "COTE",
+        "email": "GrCOTE7@GMail.com"
+    }]
+}
