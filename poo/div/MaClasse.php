@@ -40,7 +40,7 @@ class MaClasse2
 $a = new MaClasse2;
 $b = clone $a;
 
-echo 'Nombre d\'instances de MaClasse : ', MaClasse2::getInstances() . '<hr>';
+echo 'Nombre d\'instances de MaClasse : ', MaClasse2::getInstances() , '<hr>';
 
 class A
 {
