@@ -14,12 +14,12 @@ if (isset($_GET['deconnexion'])) {
  exit();
 }
 
-$db = new PDO('mysql:host=localhost;dbname=combats', 'root', '');
-$db->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_WARNING);
+$dbc = new PDO('mysql:host=localhost;dbname=combats', 'root', '');
+$dbc->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_WARNING);
 
 // include 'reflexivite.php'; exit;
 
-$manager = new PersonnagesManager($db);
+$manager = new PersonnagesManager($dbc);
 
 if (isset($_SESSION['perso'])) // Si la session perso existe, on restaure l'objet.
 {

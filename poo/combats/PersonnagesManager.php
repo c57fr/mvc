@@ -39,7 +39,7 @@ class PersonnagesManager
   {
     if (is_int($info)) // On veut voir si tel personnage ayant pour id $info existe.
     {
-      return (bool)$this->db->query('SELECT COUNT(*) FROM personnages_v2 WHERE id = ' . $info)->fetchColumn();
+      return (bool)$this->dbc->query('SELECT COUNT(*) FROM personnages_v2 WHERE id = ' . $info)->fetchColumn();
     }
 
     // Sinon, c'est qu'on veut vérifier que le nom existe ou pas.
@@ -56,7 +56,7 @@ class PersonnagesManager
       $qry = $this->dbc->query('SELECT id idp, nom, degats, timeEndormi, type, atout FROM personnages_v2 WHERE id = ' . $info);
       $perso = $qry->fetch(PDO::FETCH_ASSOC);
     } else {
-      $qry = $this->db->prepare('SELECT id idp, nom, degats, timeEndormi, type, atout FROM personnages_v2 WHERE nom = :nom');
+      $qry = $this->dbc->prepare('SELECT id idp, nom, degats, timeEndormi, type, atout FROM personnages_v2 WHERE nom = :nom');
       $qry->execute([':nom' => $info]);
 
       $perso = $qry->fetch(PDO::FETCH_ASSOC);
@@ -76,7 +76,7 @@ class PersonnagesManager
   {
     $persos = [];
 
-    $qry = $this->db->prepare('SELECT id idp, nom, degats, timeEndormi, type, atout FROM personnages_v2 WHERE nom <> :nom ORDER BY nom');
+    $qry = $this->dbc->prepare('SELECT id idp, nom, degats, timeEndormi, type, atout FROM personnages_v2 WHERE nom <> :nom ORDER BY nom');
     $qry->execute([':nom' => $nom]);
 
     while ($donnees = $qry->fetch(PDO::FETCH_ASSOC)) {
@@ -96,7 +96,7 @@ class PersonnagesManager
 
   public function update(Personnage $perso)
   {
-    $qry = $this->db->prepare('UPDATE personnages_v2 SET degats = :degats, timeEndormi = :timeEndormi, atout = :atout WHERE id = :id');
+    $qry = $this->dbc->prepare('UPDATE personnages_v2 SET degats = :degats, timeEndormi = :timeEndormi, atout = :atout WHERE id = :id');
 
     $qry->bindValue(':degats', $perso->degats(), PDO::PARAM_INT);
     $qry->bindValue(':timeEndormi', $perso->timeEndormi(), PDO::PARAM_INT);
