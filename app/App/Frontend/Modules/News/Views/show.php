@@ -25,5 +25,3 @@ foreach ($comments as $comment) {
 <?php
 }
 ?>
-
-<p><a href="commenter-<?=$news['id']?>.html">Ajouter un commentaire</a></p>

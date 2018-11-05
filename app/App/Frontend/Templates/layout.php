@@ -42,7 +42,7 @@
         </section>
       </div>
 
-      <footer></footer>
+      <footer>&copy; GC7 - 2018</footer>
     </div>
   </body>
 </html>

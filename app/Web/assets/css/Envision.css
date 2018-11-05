@@ -364,8 +364,9 @@ nav ul li#current a {
 	float: left;
 	width: 70%;
 	padding: 0;
-	margin: 5px 0 0 5px;
+	margin: 5px 0 15px 5px;
 	display: inline;
+	border-radius: 14px;
 }
 
 #main h2 {
@@ -475,6 +476,7 @@ nav ul li#current a {
 footer {
 	color: #C6DDEE;
 	background: #CCC url(../images/footer.jpg) no-repeat center top;
+	padding: 20px 0;
 	clear: both;
 	width: 820px;
 	height: 65px;
