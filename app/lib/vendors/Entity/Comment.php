@@ -5,10 +5,10 @@ use \OCFram\Entity;
 
 class Comment extends Entity
 {
- protected $news,
- $auteur,
- $contenu,
-  $date;
+ protected  $news,
+            $auteur,
+            $contenu,
+            $date;
 
  const AUTEUR_INVALIDE  = 1;
  const CONTENU_INVALIDE = 2;

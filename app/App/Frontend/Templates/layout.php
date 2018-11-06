@@ -13,8 +13,8 @@
   <body>
     <div id="wrap">
       <header>
-        <h1><a href="/">Mon super site</a></h1>
-        <p>Comment ça, il n'y a presque rien ?</p>
+        <h1><a href="/">Mon super site de News</a></h1>
+        <p>Comment ça, il n'y a presque rien ? Et les commentaires ?!?</p>
       </header>
 
       <nav>
