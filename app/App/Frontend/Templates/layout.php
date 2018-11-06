@@ -7,7 +7,7 @@
 
     <meta charset="utf-8" />
 
-    <link rel="stylesheet" href="assets/css/Envision.css" type="text/css" />
+    <link rel="stylesheet" href="/assets/css/Envision.css" type="text/css" />
   </head>
 
   <body>
@@ -35,14 +35,14 @@
 }
 ?>
 
-          <h1><?=$title?></h1>
+          <h1><?=$title ?? '' ?></h1>
 
           <?=$content?>
 
         </section>
       </div>
 
-      <footer>&copy; GC7 - 2018</footer>
+      <footer>&copy; <a href="/admin">GC7</a> - 2018</footer>
     </div>
   </body>
 </html>

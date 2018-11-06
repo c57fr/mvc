@@ -29,13 +29,13 @@ body {
 a,
 a:visited {
 	text-decoration: none;
-	color: #2180BC;
-	background: inherit;
+	/*color: #2180BC;
+	background: inherit;*/
 }
 
 a:hover {
 	color: #88ac0b;
-	background: inherit;
+	/*background: inherit;*/
 	text-decoration: underline;
 }
 
@@ -185,8 +185,9 @@ label {
 }
 
 input {
-	padding: 2px;
-	border: 1px solid #eee;
+	cursor: pointer;
+	padding: 3px;
+	/*border: 1px solid #eee;*/
 	font: normal 1em Verdana, sans-serif;
 	color: #777;
 }

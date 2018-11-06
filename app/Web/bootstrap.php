@@ -6,6 +6,8 @@ if (!isset($_GET['app']) || !file_exists(__DIR__ . '/../App/' . $_GET['app'])) {
  $_GET['app'] = DEFAULT_APP;
 }
 
+//var_dump($_GET['app']);
+
 // On commence par inclure la classe nous permettant d'enregistrer nos autoload
 require __DIR__ . '/../lib/OCFram/SplClassLoader.php';
 
@@ -22,11 +24,11 @@ $modelLoader->register();
 $entityLoader = new SplClassLoader('Entity', __DIR__ . '/../lib/vendors');
 $entityLoader->register();
 
-// Il ne nous suffit plus qu'à déduire le nom de la classe et à l'instancier
+$formBuilderLoader = new SplClassLoader('FormBuilder', __DIR__ . '/../lib/vendors');
+$formBuilderLoader->register();
+
+// Il ne nous suffit plus qu'à déduire le nom de la classe et de l'instancier
 $appClass = 'App\\' . $_GET['app'] . '\\' . $_GET['app'] . 'Application';
 
-// var_dump($OCFramLoader);
-
-// C:\laragon\www\mvc\app\Web\bootstrap.php:28:string 'App\Frontend\FrontendApplication' (length=32)
 $app = new $appClass;
 $app->run();

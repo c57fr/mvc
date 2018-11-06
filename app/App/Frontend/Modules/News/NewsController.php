@@ -2,7 +2,9 @@
 namespace App\Frontend\Modules\News;
 
 use \Entity\Comment;
+use \FormBuilder\CommentFormBuilder;
 use \OCFram\BackController;
+use \OCFram\FormHandler;
 use \OCFram\HTTPRequest;
 
 class NewsController extends BackController
@@ -12,16 +14,12 @@ class NewsController extends BackController
   $nombreNews       = $this->app->config()->get('nombre_news');
   $nombreCaracteres = $this->app->config()->get('nombre_caracteres');
 
-  // var_dump($nombreNews);
-
   // On ajoute une définition pour le titre.
   $this->page->addVar('title', 'Liste des ' . $nombreNews . ' dernières news');
 
   // On récupère le manager des news.
   $manager = $this->managers->getManagerOf('News');
 
-  // Cette ligne, vous ne pouviez pas la deviner sachant qu'on n'a pas encore touché au modèle.
-  // Contentez-vous donc d'écrire cette instruction, nous implémenterons la méthode ensuite.
   $listeNews = $manager->getList(0, $nombreNews);
 
   foreach ($listeNews as $news) {
@@ -52,26 +50,32 @@ class NewsController extends BackController
 
  public function executeInsertComment(HTTPRequest $request)
  {
-  $this->page->addVar('title', 'Ajout d\'un commentaire');
-
-  if ($request->postExists('pseudo')) {
+  // Si le formulaire a été envoyé.
+  if ($request->method() == 'POST') {
    $comment = new Comment([
     'news'    => $request->getData('news'),
-    'auteur'  => $request->postData('pseudo'),
+    'auteur'  => $request->postData('auteur'),
     'contenu' => $request->postData('contenu'),
    ]);
-
-   if ($comment->isValid()) {
-    $this->managers->getManagerOf('Comments')->save($comment);
-
-    $this->app->user()->setFlash('Le commentaire a bien été ajouté, merci !');
-
-    $this->app->httpResponse()->redirect('news-' . $request->getData('news') . '.html');
-   } else {
-    $this->page->addVar('erreurs', $comment->erreurs());
-   }
-
-   $this->page->addVar('comment', $comment);
+  } else {
+   $comment = new Comment;
   }
+
+  $formBuilder = new CommentFormBuilder($comment);
+  $formBuilder->build();
+
+  $form = $formBuilder->form();
+
+  $formHandler = new FormHandler($form, $this->managers->getManagerOf('Comments'), $request);
+
+  if ($formHandler->process()) {
+   $this->app->user()->setFlash('Le commentaire a bien été ajouté, merci !');
+
+   $this->app->httpResponse()->redirect('news-' . $request->getData('news') . '.html');
+  }
+
+  $this->page->addVar('comment', $comment);
+  $this->page->addVar('form', $form->createView());
+  $this->page->addVar('title', 'Ajout d\'un commentaire');
  }
 }
